@@ -20,11 +20,10 @@ import { Badge } from "@/components/ui/badge";
 
 export default function HostingCenterPage() {
   return (
-    <div className="min-h-screen  lg:pl-64">
+    <div className="h-screen flex  ">
       <Sidebar />
-
-      <div className="fixed h-[95%]  page_width m-5 bg-accent rounded-[15px] overflow-hidden">
-        <div className="flex flex-col h-full overflow-y-scroll scrollbar-none">
+      <div className="flex-1 transition-all duration-300 p-5 overflow-hidden">
+        <div className="h-full bg-accent rounded-[15px] overflow-hidden flex flex-col">
           <Header />
 
           <main className="flex-1 p-6">

@@ -9,24 +9,12 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import {
   DashboardSquare02Icon,
   Chart01Icon,
-  User02Icon,
-  Activity01Icon,
-  Database01Icon,
-  Shield01Icon,
-  File01Icon,
   Settings01Icon,
-  Eraser01Icon,
   BeltIcon,
   Logout01Icon,
   Menu01Icon,
   Cancel01Icon,
-  TvFixFreeIcons,
-  ComputerAddIcon,
-  ComputerDeskIcon,
-  Computer,
   Server,
-  ArrowLeft01Icon,
-  ArrowRight01Icon,
 } from "@hugeicons/core-free-icons";
 
 import { cn } from "@/lib/utils";
@@ -52,16 +40,6 @@ interface NavItem {
 const navItems: NavItem[] = [
   { title: "Dashboard", href: "/dashboard", icon: DashboardSquare02Icon },
   { title: "Spot Rate", href: "/dashboard/analytics", icon: Chart01Icon },
-  {
-    title: "Configure Screens",
-    href: "/dashboard/users",
-    icon: TvFixFreeIcons,
-  },
-  { title: "My Screens", href: "/dashboard/activity", icon: Computer },
-  { title: "System Health", href: "/dashboard/system", icon: Database01Icon },
-  { title: "Security", href: "/dashboard/security", icon: Shield01Icon },
-  { title: "Reports", href: "/dashboard/reports", icon: File01Icon },
-  { title: "Settings", href: "/dashboard/settings", icon: Settings01Icon },
   { title: "WebServer", href: "/dashboard/webserver", icon: Server },
 ];
 
@@ -208,7 +186,7 @@ export default function Sidebar() {
                 </button>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent align="end" className="w-56" >
+              <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuLabel>
                   <div className="flex flex-col">
                     <span>Super Admin</span>
