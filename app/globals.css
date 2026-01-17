@@ -3,6 +3,9 @@
 /* ============================= */
 /* TAILWIND V4 THEME            */
 /* ============================= */
+:root {
+  interpolate-size: allow-keywords;
+}
 
 @theme {
   --color-background: hsl(0 0% 100%);
@@ -34,7 +37,7 @@
 /* ============================= */
 
 :root {
-  --background: 0 0% 100%;
+  --background: red;
   --foreground: 222.2 84% 4.9%;
   --card: 0 0% 100%;
   --card-foreground: 222.2 84% 4.9%;
@@ -54,7 +57,7 @@
   --input: 214.3 31.8% 91.4%;
   --ring: 222.2 84% 4.9%;
   --radius: 0.5rem;
-  
+
   --color-white: #ffffff;
   --color-black: #171717;
   --color-primary-1: #D4AF37;
@@ -90,6 +93,21 @@
     color: hsl(var(--foreground));
   }
 }
+
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    /* IE, Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari */
+  }
+}
+
 
 /* ============================= */
 /* CUSTOM STYLES (for non-dashboard pages) */

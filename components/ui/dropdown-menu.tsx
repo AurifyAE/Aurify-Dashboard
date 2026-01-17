@@ -66,20 +66,42 @@ const DropdownMenu = ({ children, open: controlledOpen, onOpenChange }: Dropdown
   )
 }
 
-interface DropdownMenuTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface DropdownMenuTriggerProps extends React.HTMLAttributes<HTMLElement> {
   asChild?: boolean
 }
 
-const DropdownMenuTrigger = React.forwardRef<HTMLButtonElement, DropdownMenuTriggerProps>(
-  ({ className, children, asChild, ...props }, ref) => {
+const DropdownMenuTrigger = React.forwardRef<HTMLElement, DropdownMenuTriggerProps>(
+  ({ className, children, asChild, onClick, ...props }, ref) => {
     const { open, setOpen } = useDropdownMenu()
+
+    const handleClick: React.MouseEventHandler<HTMLElement> = (event) => {
+      onClick?.(event)
+      setOpen(!open)
+    }
+
+    if (asChild && React.isValidElement(children)) {
+      type TriggerChildProps = {
+        onClick?: React.MouseEventHandler<HTMLElement>
+        className?: string
+      } & Record<string, unknown>
+
+      const child = children as React.ReactElement<TriggerChildProps>
+      return React.cloneElement(child, {
+        ...props,
+        onClick: handleClick,
+        "data-dropdown-trigger": true,
+        className: cn(child.props?.className, className),
+      })
+    }
+
     return (
       <button
-        ref={ref}
+        ref={ref as unknown as React.Ref<HTMLButtonElement>}
+        type="button"
         data-dropdown-trigger
-        onClick={() => setOpen(!open)}
+        onClick={handleClick as unknown as React.MouseEventHandler<HTMLButtonElement>}
         className={className}
-        {...props}
+        {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
       >
         {children}
       </button>
